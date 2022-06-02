@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <title>First One!</title>
+  
+</head>
+<body>
+  <div id = "question">
+    <pre></pre>
+  </div>
+  <label for="text">Enter your text here! <br></label>
+  <input type="text" id="OneTwoWenty" placeholder="And I'll count the words :>"/>
+  <br>
+  <button id="button">Count em!</button>
+
+  <form>
+    
+    <div id="finalCount">
+        <pre></pre>
+    </div>
+  </form>
+<script type = "text/javascript" src="C:\Users\Jester\Documents\Code stuff\Dev Chap\7 amigops\One\WordCounter.js"></script>  
+<script>  
+    prompt = {
+      text: "Enter your text here! I'll count the words!"
+    }
+  function wordCount(str){
+      str = str.stringify
+      x = 0
+      //y = str.split(/[ .:;?!~,`"&|()<>{}\[\]\r\n/\\]+/).length
+      y = str.split(/[\s]+/).length //Just spaces in a textfield 
+      g = str.split(/[\s]+/)    
+
+      for(let i = y; i > 0; i--){
+          //console.log(g[i] + " " + i)
+          if(g[i]) x++
+      }
+
+      return x
+  }
+
+
+  let pre = document.querySelector('#question pre');
+  pre.textContent = '\n' + JSON.stringify(prompt, '\t', 2);
+
+
+
+  const LetsCount = (ev)=>{
+    
+
+    ev.preventDefault();  //to stop the form submitting
+    let TheirWords = {
+        title: document.getElementById('OneTwoWenty').value,
+        count: wordCount(document.getElementById('OneTwoWenty'))
+  }
+
+
+
+  let pre = document.querySelector('#finalCount pre');
+  pre.textContent = '\n' + JSON.stringify(TheirWords, '\t', 2);
+
+
+  }
+  document.addEventListener('DOMContentLoaded', ()=>{
+  document.getElementById('button').addEventListener('click', LetsCount);
+  });
+
+
+
+
+
+
+
+
+</script>
+
+
+</body>
+</html>
