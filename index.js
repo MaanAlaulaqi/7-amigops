@@ -46,11 +46,16 @@ app.post('/WordsCount', (req, res) => {
         })
     }
     console.log(result)
-    res.json(result)
+    res.json({
+        result
+    })
 })
 
 //Testing stuff
-app.post('/add', (req, res) => {
+app.post("/add", (req, res) => {
     const { a, b } = req.body;
-    res.send(`The sum is: ${a + b}`)
-  })
+    res.send({
+      result: parseInt(a) + parseInt(b)
+    });
+  });
+  

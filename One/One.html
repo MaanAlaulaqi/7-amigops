@@ -54,11 +54,19 @@
                 },
                 body: JSON.stringify({
                   text: txtToCount})                  
-            }).then (function(res){
-              return res.json()
+            }).then (res =>  res.json())
+            //Self note: New var, it's a function call, it's calling out to res.
+            //Learn what happens next.
+            .then(finalCount => {
+              const {
+                res
+              } = finalCount
+              document.querySelector(".result").innerText = JSON.stringify(finalCount)
+              console.log(finalCount)
             })
-            .then (document.querySelector(".result").innerText = txtToCount)
-            .then(res => console.log(res))
+            .then(finalCount => console.log(finalCount)) //This print undefined still, fix
+            /*.then (res => document.querySelector(".result").innerText = `text ${JSON.stringify(res)}`)
+ */
             .catch(err => console.log(err))
  
         }
