@@ -1,80 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  
-  <title>First One!</title>
-  
-</head>
-<body>
-  <div id = "question">
-    <pre></pre>
-  </div>
-  <label for="text">Enter your text here! <br></label>
-  <input type="text" id="OneTwoWenty" placeholder="And I'll count the words :>"/>
-  <br>
-  <button id="button">Count em!</button>
-
-  <form>
-    
-    <div id="finalCount">
-        <pre></pre>
-    </div>
-  </form>
-<script type = "text/javascript" src="C:\Users\Jester\Documents\Code stuff\Dev Chap\7 amigops\One\WordCounter.js"></script>  
-<script>  
-    prompt = {
-      text: "Enter your text here! I'll count the words!"
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wordless? Hmm?</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-  function wordCount(str){
-      str = str.stringify
-      x = 0
-      //y = str.split(/[ .:;?!~,`"&|()<>{}\[\]\r\n/\\]+/).length
-      y = str.split(/[\s]+/).length //Just spaces in a textfield 
-      g = str.split(/[\s]+/)    
+    .container {
+      height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 20px;
+    }
+    label,
+    input[type="submit"] {
+      margin-top: 20px;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <h1>Simple POST Form</h1>
+      </h1>
+      <form>
+        <label>Text:</label>
+        <input id="text" type="text" />
+        <input type="submit" value="Count"/>
+      </form>
+      <div class="result">Click Count!</div>
+    </div>
+    <script>
+        document.addEventListener("submit", sendData)
 
-      for(let i = y; i > 0; i--){
-          //console.log(g[i] + " " + i)
-          if(g[i]) x++
-      }
-
-      return x
-  }
-
-
-  let pre = document.querySelector('#question pre');
-  pre.textContent = '\n' + JSON.stringify(prompt, '\t', 2);
-
-
-
-  const LetsCount = (ev)=>{
-    
-
-    ev.preventDefault();  //to stop the form submitting
-    let TheirWords = {
-        title: document.getElementById('OneTwoWenty').value,
-        count: wordCount(document.getElementById('OneTwoWenty'))
-  }
-
-
-
-  let pre = document.querySelector('#finalCount pre');
-  pre.textContent = '\n' + JSON.stringify(TheirWords, '\t', 2);
-
-
-  }
-  document.addEventListener('DOMContentLoaded', ()=>{
-  document.getElementById('button').addEventListener('click', LetsCount);
-  });
+        function sendData(ev){
+            ev.preventDefault();
+            var txtToCount = document.querySelector("#text").value
+            //////
 
 
+            fetch('/WordsCount', {
+                method: "POST",
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(txtToCount)
+            })
+            .then(res => res.json())
+            .then(data => {
+                const {
+                    result
+                } = data;
+                document.querySelector(
+                    ".result"
+                ).innerText = `The number of words is: ${result}!`;
+            }).catch(err => console.log(err));
 
 
+            /////
+        }
 
-
-
-
-</script>
-
-
-</body>
+    </script>
+  </body>
 </html>

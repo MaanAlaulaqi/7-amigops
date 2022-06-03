@@ -1,28 +1,31 @@
 //ing = "Hello there! What's your name!    HAHAH HAHAHA    WHAT"
-ing = "   HELO EE     EE    GRGRE   EGDSFGDF"
-ing = "  wef wefwef  wefwefwe wefwefwefwef gre     ger    rege                  ewgf   "
+var ing = "   HELO EE     EE    GRGRE   EGDSFGDF"
+ ing = "  wef wefwef  wefwefwe wefwefwefwef gre     ger    rege                  ewgf   "
 
 
+export function test(){
+    console.log("I have been called well")
+}
 
-
-function wordCount(str){
-    x = 0
+export default function wordCount(str){
+    var x = 0
     //y = str.split(/[ .:;?!~,`"&|()<>{}\[\]\r\n/\\]+/).length
-    y = str.split(/[\s]+/).length //Just spaces in a textfield 
-    g = str.split(/[\s]+/)    
+    var y = str.toString().split(/[\s]+/).length //Just spaces in a textfield 
+    var g = str.toString().split(/[\s]+/)    
 
-    for(let i = y; i > 0; i--){
-        //console.log(g[i] + " " + i)
+    for(let i = y; i >= 0; i--){
+        console.log(g[i] + " " + i)
         if(g[i]) x++
     }
 
+    console.log(x) //
     return x
 }
 
 
 
 
-console.log(wordCount(ing))
+//console.log(wordCount(ing))
 
 
 

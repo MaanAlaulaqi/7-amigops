@@ -1,3 +1,6 @@
 # 7-amigops
 
-Bunch of fun stuff that's driving me bonkers.
+Fun challenges + some training.
+
+The idea here is I'll have one page and the challenges would be accessible through it.
+We'll see as we go :>
