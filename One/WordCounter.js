@@ -14,7 +14,7 @@ export default function wordCount(str){
     var g = str.toString().split(/[\s]+/)    
 
     for(let i = y; i >= 0; i--){
-        console.log(g[i] + " " + i)
+        //console.log(g[i] + " " + i) //testssssssss
         if(g[i]) x++
     }
 

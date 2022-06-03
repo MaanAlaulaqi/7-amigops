@@ -12,6 +12,7 @@ const PORT = 666
 
 const app = express()
 app.use(bodyParser.json())
+app.use(express.json())
 
 app.listen(
     PORT,
@@ -30,18 +31,22 @@ app.get('/WordsCount', (req, res) => {
 })
 
 app.post('/WordsCount', (req, res) => {
+    console.log(req.body)
     const textInputted = req.body;
-    console.log(textInputted)
-    const numOfWords = wordCount(textInputted.text)
+    console.log(textInputted.text)
+    const numOfWords = wordCount(textInputted.text) //I need to remember what I label the things in JSON files
     //Catching empty/unacceptable instances?
+    var result = ({})
     if(!textInputted.text){ 
-    res.send({
-        error: "Parameter text is missing."
+        result = ({
+            error: "Parameter text is missing."
     })} else{
-        res.send({
+        result = ({
             count: numOfWords
         })
     }
+    console.log(result)
+    res.json(result)
 })
 
 //Testing stuff

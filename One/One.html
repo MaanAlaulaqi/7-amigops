@@ -31,7 +31,7 @@
   </style>
   <body>
     <div class="container">
-      <h1>Simple POST Form</h1>
+      <h1>Word Counter</h1>
       </h1>
       <form>
         <label>Text:</label>
@@ -41,34 +41,26 @@
       <div class="result">Click Count!</div>
     </div>
     <script>
-        document.addEventListener("submit", sendData)
-
-        function sendData(ev){
-            ev.preventDefault();
-            var txtToCount = document.querySelector("#text").value
-            //////
-
-
-            fetch('/WordsCount', {
+        document.addEventListener("submit", sendData) 
+        function sendData(ev) {
+          ev.preventDefault();
+          var txtToCount = document.getElementById("text").value
+          console.log(txtToCount)
+          fetch('/WordsCount', {
                 method: "POST",
                 headers: {
                     Accept: "application/json",
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify(txtToCount)
+                body: JSON.stringify({
+                  text: txtToCount})                  
+            }).then (function(res){
+              return res.json()
             })
-            .then(res => res.json())
-            .then(data => {
-                const {
-                    result
-                } = data;
-                document.querySelector(
-                    ".result"
-                ).innerText = `The number of words is: ${result}!`;
-            }).catch(err => console.log(err));
-
-
-            /////
+            .then (document.querySelector(".result").innerText = txtToCount)
+            .then(res => console.log(res))
+            .catch(err => console.log(err))
+ 
         }
 
     </script>
