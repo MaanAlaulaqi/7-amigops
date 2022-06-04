@@ -24,6 +24,21 @@ function binet(n) {
 }
 
 
+function fibonacci(n)
+{
+    var fib;
+    for(var i = 0; i < n; i++)
+    {
+         
+        // Using direct formula
+        fib = (Math.pow((1 + Math.sqrt(5)), i) -
+               Math.pow((1 - Math.sqrt(5)), i)) /
+           (Math.pow(2, i) * Math.sqrt(5));
+ 
+        console.log(parseInt(fib) + " ");
+    }
+}
 
-console.log(fib(wdwd))
+
+console.log(fibonacci(wdwd))
 
