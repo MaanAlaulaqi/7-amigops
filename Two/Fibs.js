@@ -27,7 +27,7 @@ function binet(n) {
 function fibonacci(n)
 {
     var fib;
-    for(var i = 0; i < n; i++)
+    for(var i = 0; i <= n; i++)
     {
          
         // Using direct formula
@@ -40,5 +40,7 @@ function fibonacci(n)
 }
 
 
-console.log(fibonacci(wdwd))
+console.log(fibonacci(wdwd)) 
+console.log("what are magnets????") 
+console.log(binet(wdwd)) 
 
