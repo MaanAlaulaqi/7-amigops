@@ -39,17 +39,17 @@ app.post('/WordsCount', (req, res) => {
     //Catching empty/unacceptable instances?
     var result = ({})
     if(!textInputted.text){ 
-        result = ({
+        res.json  ({
             error: "Parameter text is missing."
     })} else{
-        result = ({
+        res.json  ({
             count: numOfWords
         })
     }
     //console.log(result)
-    res.json({
+   /*  res.json({
         result
-    })
+    }) */
 })
 
 //TWO
