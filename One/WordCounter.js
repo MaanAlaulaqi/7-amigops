@@ -18,7 +18,7 @@ export default function wordCount(str){
         if(g[i]) x++
     }
 
-    console.log(x) //
+    //console.log(x) //
     return x
 }
 

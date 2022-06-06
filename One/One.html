@@ -39,9 +39,7 @@
         <input type="submit" value="Count"/>
       </form>
       <div class="result">Click Count! <br><br></div>
-      <h1>Testing something</h1>
-      <button onclick="testFunction()">Submit</button>
-      <div id="output"></div>
+    
     </div>
     <script>
         document.addEventListener("submit", sendData) 
@@ -65,6 +63,7 @@
                 res
               } = finalCount
               document.querySelector(".result").innerText = JSON.stringify(finalCount)
+              console.log("Final count under me!")
               console.log(finalCount)
             })
             .then(finalCount => console.log(finalCount)) //This print undefined still, fix
@@ -74,34 +73,6 @@
  
         }
 
-        function testFunction(){
-
-          var txtToCount = document.getElementById("text").value
-          console.log(txtToCount)
-          fetch('/WordsCount', {
-                method: "POST",
-                headers: {
-                    Accept: "application/json",
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                  text: txtToCount})                  
-            }).then (res =>  res.json())
-            .then(res1 => {
-              const {
-                res
-              } = res1})
-              document.getElementById("output");
-          //output.innerHTML = "hello planet";
-              output.innerHTML = "Boop! " + JSON.stringify(res1)
-              console.log()
-              console.log(res1)
-              
-
-          var output = document.getElementById("output");
-          //output.innerHTML = "hello world";
-          output.innerHTML = "Boop! " + JSON.stringify(res1)
-        }
 
     </script>
   </body>

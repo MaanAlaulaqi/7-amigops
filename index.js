@@ -1,4 +1,5 @@
 import wordCount from "./One/WordCounter.js"
+import fibonacci from "./Two/Fibs.js"
 
 import { fileURLToPath } from 'url'; //quickfix for __dirname not being defined, I'll look into it later
 const __filename = fileURLToPath(import.meta.url);
@@ -31,9 +32,9 @@ app.get('/WordsCount', (req, res) => {
 })
 
 app.post('/WordsCount', (req, res) => {
-    console.log(req.body)
+    //console.log(req.body)
     const textInputted = req.body;
-    console.log(textInputted.text)
+    //console.log(textInputted.text)
     const numOfWords = wordCount(textInputted.text) //I need to remember what I label the things in JSON files
     //Catching empty/unacceptable instances?
     var result = ({})
@@ -45,11 +46,25 @@ app.post('/WordsCount', (req, res) => {
             count: numOfWords
         })
     }
-    console.log(result)
+    //console.log(result)
     res.json({
         result
     })
 })
+
+//TWO
+app.get('/Fibby', (req,res) => {
+    res.sendFile(path.join(__dirname, 'Two/Two.html'))
+})
+
+app.post('/Fibby', (req, res) => {
+    const numInputted = req.body
+    console.log(numInputted)
+    const FibOfThis = fibonacci(numInputted.num)
+    console.log(FibOfThis)
+
+})
+
 
 //Testing stuff
 app.post("/add", (req, res) => {

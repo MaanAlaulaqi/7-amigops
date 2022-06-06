@@ -24,7 +24,7 @@ function binet(n) {
 }
 
 
-function fibonacci(n)
+export default function fibonacci(n)
 {
     var fib;
     for(var i = 0; i <= n; i++)
@@ -36,6 +36,7 @@ function fibonacci(n)
            (Math.pow(2, i) * Math.sqrt(5));
            
            console.log(parseInt(fib) + " "); 
+           return parseInt((fib) + ", ") 
         
     }
 }
