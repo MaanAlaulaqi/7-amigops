@@ -1,7 +1,7 @@
 {
   "name": "7-amigops",
   "version": "1.0.0",
-  "description": "",
+  "description": "Fun challenges + some training.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -13,5 +13,13 @@
     "body-parser": "^1.20.0",
     "express": "^4.18.1",
     "nodemon": "^2.0.16"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MaanAlaulaqi/7-amigops.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MaanAlaulaqi/7-amigops/issues"
+  },
+  "homepage": "https://github.com/MaanAlaulaqi/7-amigops#readme"
 }

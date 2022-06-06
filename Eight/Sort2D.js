@@ -1,16 +1,33 @@
-import FileSystem from 'fs'
+import fs from 'fs'
+import  path from 'path'
+import { fileURLToPath } from 'url'
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename)
 
+fs.readdir(
+    path.resolve(__dirname, 'c:/Assignment8/'),
+    (err, files) => {
+      if (err) throw err;
+      
+      for (let file of files) {
+        console.log(file);
+      }
+    }
+  );
+
+//I feel like I'm overcomplicating this..
 
 var yarHar = []
-const fileToRead = "C:\Assignment8\sample.txt"
+const fileToRead = path.join(__dirname, 'sample.txt') //'c:/Assignment8/sample.txt' 
 
-/* FileSystem.readFileSync('fileToRead', 'utf-8', (err, data) => {
+fs.readFileSync('fileToRead', 'utf-8', (err, data) => {
     console.log(data)
-}) */
+}) 
 
 //test array  
 yarHar = [2,3.4,56,76,4.5,4.3,4.4,4.4,5.6,3,2,35,23,5,23,45,25,25,2, 44,44,44,44,44, 55,66,3,5,3,2,2];
 
+//Timer start
 console.time("Execution time")
 
 let uniqueNums = [...new Set(yarHar)];
@@ -28,6 +45,7 @@ uniqueNums.sort(function(a, b) {
     return a - b; // ascending order. b - a for descending
   });
 console.log(uniqueNums)
+//Timer end -- Time it took to remove dupes and sort
 console.timeEnd("Execution time") 
 
 /* var timeSpent=(end-begin)/1000 + " seconds"
