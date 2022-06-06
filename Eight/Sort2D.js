@@ -25,7 +25,7 @@ let uniqueNums = [...new Set(yarHar)];
 
 
 uniqueNums.sort(function(a, b) {
-    return a - b;
+    return a - b; // ascending order. b - a for descending
   });
 console.log(uniqueNums)
 console.timeEnd("Execution time") 
