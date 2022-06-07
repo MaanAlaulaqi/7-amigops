@@ -11,14 +11,33 @@ console.log("YO")
 
 //if (data.indexOf(/^[0-9]+$/)> -1){ console.log("wee " +data.indexOf(/[a-zA-Z]+/))}
 //if (data.match(/^[0-9]+$/)){ console.log("wee " +data.indexOf(/[a-zA-Z]+/))} else
- dataSet = data.split(',')
- //console.log(isNaN(data[15]) + " " + data[15])
+
+//SELF NOTE
+// You're trying to make a 2D array, one dimension will be input, the other dimension will be the sorted result
+//You somehow ended up with a 3D array 
+//fix it LOL
+    dataSet = data.split(/\r\n\r\n\r\n/)
+    var temp = [[dataSet],[]]
+    console.log("I'm TEMP! " + temp[0][0] + "AHH")
+
+for (let i = 0; i < dataSet.length; i++){
+     //temp = [[dataSet[i]],[dataSet[i].split(',')]]
+     temp = [[dataSet[i]][i]] = dataSet[i].split(',')
+    
+
+    console.log(temp[dataSet[i][i]])
+    console.log("Boop!")
+}
+console.log("I'm TEMP! " + temp[0][0] + " AHH")
+console.log(temp[0][0][0].length)
+
+//console.log(isNaN(data[15]) + " " + data[15])
  var verificationCounter = 0 //If this is more than 0, then sample.txt contains other characters
  for(let i = 0; i < data.length; i++){
-    console.log(i + " - " +isNaN(data[i]) + " " + data[i])
+   // console.log(i + " - " +isNaN(data[i]) + " " + data[i])
     if(data[i] != ',' && isNaN(data[i]) && data[i] != '.') verificationCounter++ 
     if(data[i] == ',') {
-        console.log("COMMA!")
+       // console.log("COMMA!")
 
     }
     //console.log("VER# "+ verificationCounter)
