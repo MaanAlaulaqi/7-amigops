@@ -6,6 +6,7 @@ var dataSet = []
 const data = fs.readFileSync('sample.txt', {encoding: 'utf-8'});
 
 console.log(data);
+
 console.log("YO")
 
 
@@ -16,20 +17,30 @@ console.log("YO")
 // You're trying to make a 2D array, one dimension will be input, the other dimension will be the sorted result
 //You somehow ended up with a 3D array 
 //fix it LOL
-    dataSet = data.split(/\r\n\r\n\r\n/)
-    var temp = [[dataSet],[]]
-    console.log("I'm TEMP! " + temp[0][0] + "AHH")
+    dataSet = data.split(/\r\n\r\n\r\n/) //This another wacky one; /(\r?\n|\r)\d*(\r?\n|\r)/  (check https://regex101.com/r/zQ3nR3/3 for deets)
+    console.log(dataSet[0].length)
+   // console.log("I'm TEMP! " + temp[0][0] + "AHH")
+   var temp = []
+   
+   for ( let i = 0; i < dataSet.length; i++){
+    temp[i] = [dataSet[i]], [dataSet[i].split(',')]
+   }
 
-for (let i = 0; i < dataSet.length; i++){
-     //temp = [[dataSet[i]],[dataSet[i].split(',')]]
-     temp = [[dataSet[i]][i]] = dataSet[i].split(',')
-    
+console.log(temp)
 
-    console.log(temp[dataSet[i][i]])
-    console.log("Boop!")
-}
-console.log("I'm TEMP! " + temp[0][0] + " AHH")
-console.log(temp[0][0][0].length)
+console.log(temp[0][0] + " !!!")
+console.log(temp[1][0]+ " !!!")
+console.log(temp[2][0]+ " !!!")
+console.log(temp[3][0]+ " !!!")
+console.log(temp[4][0]+ " !!!")
+
+
+
+console.log("temppp")
+
+
+
+
 
 //console.log(isNaN(data[15]) + " " + data[15])
  var verificationCounter = 0 //If this is more than 0, then sample.txt contains other characters
@@ -43,7 +54,7 @@ console.log(temp[0][0][0].length)
     //console.log("VER# "+ verificationCounter)
     // if((isNaN(dataSet[i]) || dataSet[i] == ',')) console.log(dataSet[i])
  }
-console.log(verificationCounter)
+console.log(verificationCounter + " # !!")
 
  
 
@@ -54,9 +65,9 @@ fs.readFileSync('sample.txt', 'utf-8', (err, data) => {
     
 }) 
 
-
+console.log("weeeeeeee")
 console.log(dataSet)
-
+console.log(dataSet.length)
 var yarHar = []
 
 var yarHarString = "2,3.4,56,76,4.5,4.3,4.4,4.4,5.6,3,2,35,23,5,23,45,25,25,2, 44,44,44,44,44, 55,66,3,5,3,2,2"
