@@ -16,7 +16,7 @@ fs.readdir(
     }
   ); 
 
-//I feel like I'm overcomplicating this..
+
 
 // !!!
 //Consider "file upload" style of reading from C:!
@@ -29,7 +29,11 @@ const fileToRead = path.join(__dirname, 'sample.txt') //'c:/Assignment8/sample.t
 
 //Reading local Sample.txt for now, 
 //Prompt requires it to be read from C:/Assignment8/sample.txt
-fs.readFileSync('sample.txt', 'utf-8', (err, data) => { 
+fs.readFile('C:/Assignment8/sample.txt', 'utf-8', (err, data) => { 
+    if (err) {
+        console.error(err)
+        //return
+      }
     console.log(data)
 }) 
 
