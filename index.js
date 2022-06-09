@@ -33,7 +33,7 @@ app.get('/WordsCount', (req, res) => {
 
 app.post('/WordsCount', (req, res) => {
     //console.log(req.body)
-    const textInputted = req.body;
+    const textInputted = req.body
     //console.log(textInputted.text)
     const numOfWords = wordCount(textInputted.text) //I need to remember what I label the things in JSON files
     //Catching empty/unacceptable instances?
@@ -53,17 +53,44 @@ app.post('/WordsCount', (req, res) => {
 })
 
 //TWO
-app.get('/Fibby', (req,res) => {
-    res.sendFile(path.join(__dirname, 'Two/Two.html'))
+app.get(['/fibonacci',':sequenceLength'], (req,res) => {
+    //Keeping this here for later
+    res.sendFile(path.join(__dirname, 'Two/Two.html')) 
+    
+    //console.log((req.query))
+    const numInputted = req.query.sequenceLength;
+
+    //console.log(numInputted)
+    //console.log(isNaN(numInputted))
+    //console.log("wee") 
+    if(isNaN(numInputted)){ //consider adding a case where query is something else entirely
+        res.json ({
+            error: "Please enter a valid number."
+    })} else {
+        var out = fibonacci(numInputted)
+        //console.log(out)
+        res.json({
+            sequence : out
+        })
+    }
+
 })
 
-app.post('/Fibby', (req, res) => {
+
+app.post('/fibonacci', (req, res) => {
     const numInputted = req.body
-    console.log(numInputted)
-    const FibOfThis = fibonacci(numInputted.num)
-    console.log(FibOfThis)
-
-})
+    
+    if(isNaN(numInputted.sequence)){
+        res.json ({
+            error: "Please enter a valid number."
+        })} else {
+            var out = numInputted.sequence
+            res.json({
+                sequence : fibonacci(out)
+            })
+        }
+    })
+  
 
 
 //Testing stuff

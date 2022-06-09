@@ -1,4 +1,4 @@
-const  wdwd = 10
+const  wdwd = 20
 
 
 
@@ -23,26 +23,28 @@ function binet(n) {
          - Math.pow((1 - Math.sqrt(5)) / 2, n)) / Math.sqrt(5));
 }
 
+var fibResult = [] 
 
-export default function fibonacci(n)
-{
-    var fib;
-    for(var i = 0; i <= n; i++)
-    {
+export default function fibonacci(n) {
+    var fib
+    for(var i = 0; i <= n; i++) {
            
         // Using direct formula
         fib = (Math.pow((1 + Math.sqrt(5)), i) -
                Math.pow((1 - Math.sqrt(5)), i)) /
-           (Math.pow(2, i) * Math.sqrt(5));
-           
-           console.log(parseInt(fib) + " "); 
-           return parseInt((fib) + ", ") 
+           (Math.pow(2, i) * Math.sqrt(5))
+           //console.log(i)
+           //console.log(parseInt(fib) + " ")
+           fibResult[i] = parseInt(fib)
+           //return parseInt((fib) + ", ") 
         
-    }
+    } return fibResult //Final JSON 
 }
 
-fibonacci(wdwd)
-console.log(" ") 
 
-console.log(binet(wdwd)) 
+//fibonacci(wdwd)
+//console.log(", ") 
 
+//console.log(binet(wdwd)) 
+
+//console.log(fibResult)
